@@ -81,7 +81,8 @@ LAB07  Crear el proyecto base en Node.js + Express
 LAB08  Integrar Swagger UI en Express
 LAB09  Implementar endpoints a partir del contrato
 LAB10  Integrar MongoDB en la API (Docker)
-LAB11  Pruebas de API con Postman Web
+LAB11  CRUD Completo
+LAB12  Pruebas de API con Postman Web
 
 ---
 
