@@ -1,3 +1,5 @@
 lint:
   extends:
     - recommended
+  rules:
+    operation-description: error
