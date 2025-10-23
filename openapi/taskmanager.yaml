@@ -30,20 +30,10 @@ paths:
           description: Lista de tareas obtenida correctamente
           content:
             application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                      example: "1"
-                    title:
-                      type: string
-                      example: "Aprender OpenAPI"
-                    status:
-                      type: string
-                      example: "todo"
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
     post:
       tags:
         - Tasks
@@ -53,21 +43,59 @@ paths:
         required: true
         content:
           application/json:
-            schema:
-              type: object
-              required:
-                - title
-                - status
-              properties:
-                title:
-                  type: string
-                  example: "Preparar curso de OpenAPI"
-                status:
-                  type: string
-                  example: "todo"
+        schema:
+          $ref: '#/components/schemas/Task'
       responses:
         '201':
           description: Tarea creada correctamente. El ID de la nueva tarea es devuelto en la respuesta.
-tags:
-  - name: Tasks
-    description: Operaciones relacionadas con la gestión de tareas
+
+
+components:
+  schemas: {
+  components:
+  schemas:
+    Task:
+      type: object
+      required:
+        - title
+        - status
+      properties:
+        id:
+          type: string
+          example: "64ab32cd9f0c1e12a45b78d9"
+        title:
+          type: string
+          example: "Preparar práctica de OpenAPI"
+        description:
+          type: string
+          example: "Definir modelos y esquemas en OpenAPI"
+        status:
+          type: string
+          enum: [todo, in_progress, done]
+          example: "todo"
+        priority:
+          type: string
+          enum: [low, medium, high]
+          example: "medium"
+        dueDate:
+          type: string
+          format: date-time
+          example: "2025-10-30T14:00:00Z"
+        tags:
+          type: array
+          items:
+            type: string
+          example: ["work", "urgent"]
+  }
+
+  Error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          example: "Validation error"
+        details:
+          type: string
+          example: "The field 'title' is required"
