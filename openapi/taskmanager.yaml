@@ -12,6 +12,8 @@ info:
 servers:
   - url: http://localhost:3000/v1
     description: Servidor local de desarrollo
+  - url: https://staging.api.taskmanager.dev/v1
+    description: Servidor de staging
 paths: {}
 
 tags:
